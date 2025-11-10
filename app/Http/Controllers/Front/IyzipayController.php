@@ -29,7 +29,7 @@ class IyzipayController extends Controller
         $orderDetails = \App\Models\Order::with('orders_products')->where('id', Session::get('order_id'))->first()->toArray(); // Eager Loading: https://laravel.com/docs/9.x/eloquent-relationships#eager-loading    // 'order_id' was stored in the Session in checkout() method in Front/ProductsController.php    // Interacting With The Session: Retrieving Data: https://laravel.com/docs/9.x/session#retrieving-data
         // dd($orderDetails);
 
-        $nameArr = explode(' ', ); // to separate the First Name and Last Name to be able to send them with the data sent with the iyzico integrated service down below
+        $nameArr = explode(' ', $orderDetails['name']); // to separate the First Name and Last Name to be able to send them with the data sent with the iyzico integrated service down below
         // dd($nameArr);
 
         $options = \App\Models\Iyzipay::options();
