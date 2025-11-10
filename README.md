@@ -50,7 +50,7 @@ A production-grade marketplace built with Laravel 10 that lets multiple vendors 
 ## Quick Start
 1. Clone the repository and install dependencies:
    ```bash
-   git clone https://github.com/<your-org>/laravel-multi-vendor-e-commerce-application.git
+   git clone https://github.com/opadaMaljondi/laravel-multi-vendor-e-commerce-application.git
    cd laravel-multi-vendor-e-commerce-application
    composer install
    npm install
