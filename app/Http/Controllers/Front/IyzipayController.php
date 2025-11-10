@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Session;
 
 class IyzipayController extends Controller
 {
-    // iyzico Payment Gateway integration in/with Laravel    
+    // iyzico Payment Gateway integration in/with Laravel
     // https://github.com/iyzico/iyzipay-php
 
 
@@ -23,20 +23,20 @@ class IyzipayController extends Controller
         }
     }
 
-    // Make an iyzipay payment (redirect the user to iyzico payment gateway with the order details)    
+    // Make an iyzipay payment (redirect the user to iyzico payment gateway with the order details)
     public function pay() {
         // dd(Session::get('order_id')); // 'order_id' was stored in the Session in checkout() method in Front/ProductsController.php    // Interacting With The Session: Retrieving Data: https://laravel.com/docs/9.x/session#retrieving-data
         $orderDetails = \App\Models\Order::with('orders_products')->where('id', Session::get('order_id'))->first()->toArray(); // Eager Loading: https://laravel.com/docs/9.x/eloquent-relationships#eager-loading    // 'order_id' was stored in the Session in checkout() method in Front/ProductsController.php    // Interacting With The Session: Retrieving Data: https://laravel.com/docs/9.x/session#retrieving-data
         // dd($orderDetails);
 
-        $nameArr = explode(' ', $orderDetails['name']); // to separate the First Name and Last Name to be able to send them with the data sent with the iyzico integrated service down below
+        $nameArr = explode(' ', ); // to separate the First Name and Last Name to be able to send them with the data sent with the iyzico integrated service down below
         // dd($nameArr);
 
         $options = \App\Models\Iyzipay::options();
 
 
 
-        // This is a dummy request with dummy data    // Copied from: https://dev.iyzipay.com/en/iyzico-ile-ode/intialize#:~:text=request%20and%20response-,payWithIyzicoPageUrl,-value%20in%20the    
+        // This is a dummy request with dummy data    // Copied from: https://dev.iyzipay.com/en/iyzico-ile-ode/intialize#:~:text=request%20and%20response-,payWithIyzicoPageUrl,-value%20in%20the
         // We replace this expample's dummy data with our real data of the order details
         $request = new \Iyzipay\Request\CreatePayWithIyzicoInitializeRequest();
         $request->setLocale(\Iyzipay\Model\Locale::TR);
@@ -138,7 +138,7 @@ class IyzipayController extends Controller
 
         $request->setBasketItems($basketItems); // dummy data
         # make request
-        $payWithIyzicoInitialize = \Iyzipay\Model\PayWithIyzicoInitialize::create($request, $options); 
+        $payWithIyzicoInitialize = \Iyzipay\Model\PayWithIyzicoInitialize::create($request, $options);
 
 
 
